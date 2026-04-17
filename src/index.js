@@ -1,10 +1,11 @@
 import "./styles.css";
 import { getData } from "./data.js";
-import { displayProjects } from "./display.js";
+import { displayProjects, displayTasks } from "./display.js";
 import { task } from "./tasks.js";
 
 const data = getData();
 displayProjects(data.projects);
+displayTasks(data.tasks);
 const newTask = task(
   "New task created with factory",
   "desc",
