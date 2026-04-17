@@ -5,7 +5,7 @@ export function getData() {
   if (data === null) {
     data = {
       projects: ["Inbox"],
-      tasks: [{ title: "Mark as complete" }],
+      tasks: [],
     };
     const newTask = task(
       "Complete this task",
