@@ -1,0 +1,117 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  min-height: 100dvh;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  background-color: #f9f9f9;
+}
+
+#app-name,
+h2 {
+  font-style: italic;
+  border-bottom: 1px solid black;
+}
+
+#app-name {
+  font-size: 4em;
+}
+
+aside {
+  box-shadow: 12px 0 30px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  position: relative;
+  z-index: 10;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100dvh;
+  gap: 20px;
+}
+
+aside > ul {
+  padding-left: 30px;
+  list-style-type: "- ";
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 50px 100px;
+}
+
+button {
+  background-color: transparent;
+  font-size: 1.2rem;
+  border-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Helvetica, sans-serif;
+}
+
+button:hover {
+  font-size: 1.3rem;
+  text-decoration: underline;
+}
+
+#new-todo-btn {
+  padding: 10px 20px;
+  align-self: flex-end;
+}
+
+#new-project-btn {
+  margin-top: auto;
+}
+
+#task-list-header,
+#projects-heading {
+  font-size: 1.5rem;
+}
+
+#task-list {
+  margin: 30px;
+  list-style-type: none;
+}
+
+#task-list input {
+  margin-right: 5px;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid black;
+  background-color: transparent;
+  display: inline-block;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#task-list input[type="checkbox"]:checked {
+  background-color: black;
+}
