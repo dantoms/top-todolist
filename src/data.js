@@ -51,10 +51,11 @@ export class Task {
     this._title = title;
     this._description = description;
     this._priority = priority;
-    this._id = id ?? crypto.randomUUID();
-    this._created = created ?? Date.now();
     this._dueDate = dueDate ?? new Date(Date.now());
     this._project = project ?? projects.projects[0].id;
+    this._id = id ?? crypto.randomUUID();
+    this._created = created ?? Date.now();
+    this._complete = true;
 
     tasks.addTask(this);
   }
