@@ -16,9 +16,9 @@ class Projects {
 }
 
 export class Project {
-  constructor(name) {
+  constructor(name, id) {
     this._name = name;
-    this._id = crypto.randomUUID();
+    this._id = id ?? crypto.randomUUID();
     projects.addProject(this);
   }
 
@@ -47,20 +47,14 @@ class Tasks {
 }
 
 export class Task {
-  constructor(
-    title,
-    description,
-    priority,
-    dueDate = new Date(Date.now()),
-    project = projects.projects[0].id,
-  ) {
-    this._id = crypto.randomUUID();
-    this._created = Date.now();
+  constructor(title, description, priority, dueDate, project, id, created) {
     this._title = title;
     this._description = description;
-    this._dueDate = dueDate;
     this._priority = priority;
-    this._project = project;
+    this._id = id ?? crypto.randomUUID();
+    this._created = created ?? Date.now();
+    this._dueDate = dueDate ?? new Date(Date.now());
+    this._project = project ?? projects.projects[0].id;
 
     tasks.addTask(this);
   }
