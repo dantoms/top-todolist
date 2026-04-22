@@ -115,3 +115,7 @@ button:hover {
 #task-list input[type="checkbox"]:checked {
   background-color: black;
 }
+
+#task-list input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+}
