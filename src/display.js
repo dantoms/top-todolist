@@ -1,5 +1,6 @@
 import { pubsub } from "./pubsub.js";
 import { tasks } from "./data.js";
+import { DateTime } from "luxon";
 
 export default (() => {
   const taskList = document.querySelector("#task-list");
@@ -19,7 +20,12 @@ export default (() => {
       label.setAttribute("for", task._id);
       label.textContent = task._title;
 
-      li.append(input, label);
+      const due = document.createElement("p");
+      due.textContent = DateTime.fromISO(task._dueDate).toLocaleString(
+        DateTime.DATE_MED_WITH_WEEKDAY,
+      );
+
+      li.append(input, label, due);
       taskList.append(li);
     });
   };
