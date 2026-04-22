@@ -37,6 +37,6 @@ export class StorageController {
         t.project,
       );
     });
-    pubsub.publish("newData", `Data read from localStorage ${data}`);
+    pubsub.publish("newData", `Data read from localStorage.`);
   }
 }
