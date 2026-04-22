@@ -7,5 +7,8 @@ function dataRecieved(data) {
 }
 
 pubsub.subscribe("projectAdded", dataRecieved);
+pubsub.subscribe("taskAdded", dataRecieved);
 
 new Project("Inbox");
+new Task("title", "desc", "priority");
+new Task("another title", "desc", "priority");
