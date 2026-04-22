@@ -6,8 +6,14 @@ export class StorageController {
     if (localStorage.getItem("data")) {
       this.loadData();
     } else {
-      new Project("Inbox");
-      new Task("title", "desc", "priority");
+      const defaultProject = new Project("Inbox");
+      new Task(
+        "The developer's birthday!",
+        "Happy Birthday Developer",
+        "priority",
+        new Date(2030, 0, 6, 0, 0, 0),
+        defaultProject._id,
+      );
       this._currentData = { projects: projects.projects, tasks: tasks.tasks };
       pubsub.publish("newData", "New data structure created");
       this.saveData();
