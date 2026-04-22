@@ -28,13 +28,14 @@ export class StorageController {
     });
     this._currentData.tasks.forEach((t) => {
       new Task(
-        t.title,
-        t.description,
-        t.priority,
-        t.id,
-        new Date(t.created),
-        t.dueDate,
-        t.project,
+        t._title,
+        t._description,
+        t._priority,
+        t._dueDate,
+        t._project,
+        t._id,
+        new Date(t._created),
+        t._complete,
       );
     });
     pubsub.publish("newData", `Data read from localStorage.`);
