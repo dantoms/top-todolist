@@ -96,6 +96,8 @@ button:hover {
 
 #new-project-input-container {
   display: flex;
+  gap: 10px;
+}
 
 #new-project-input-container > input[type="text"] {
   width: 75%;
