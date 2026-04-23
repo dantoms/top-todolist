@@ -85,6 +85,10 @@ button:hover {
   align-self: flex-end;
 }
 
+.project {
+  list-style: none;
+}
+
 #tasks {
   width: 75%;
 }

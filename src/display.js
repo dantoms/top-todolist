@@ -48,6 +48,7 @@ export default (() => {
     projects.forEach((project) => {
       const li = document.createElement("li");
       li.setAttribute("id", project._id);
+      li.setAttribute("class", "project");
       li.textContent = project._name;
 
       ul.append(li);
