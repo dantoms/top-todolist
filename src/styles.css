@@ -85,6 +85,10 @@ button:hover {
   align-self: flex-end;
 }
 
+#tasks {
+  width: 75%;
+}
+
 #new-project-btn {
   margin-top: auto;
 }
@@ -118,4 +122,15 @@ button:hover {
 
 #task-list input[type="checkbox"]:checked + label {
   text-decoration: line-through;
+  text-decoration-thickness: 0.25rem;
+}
+
+.task-main-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li > div > p {
+  font-size: 1rem;
 }
