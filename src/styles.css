@@ -88,6 +88,7 @@ button:hover {
 .project {
   width: 75%;
   list-style: none;
+  padding-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
