@@ -60,7 +60,7 @@ export default (() => {
     const newProjectInputContainer = document.createElement("div");
     newProjectInputContainer.setAttribute("id", "new-project-input-container");
     const newProjectInput = document.createElement("input");
-    newProjectInput.setAttribute("type", "input");
+    newProjectInput.setAttribute("type", "text");
     newProjectInput.setAttribute("placeholder", "New project name");
 
     const newProjectSubmitBtn = document.createElement("button");
