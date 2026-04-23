@@ -56,6 +56,13 @@ export default (() => {
     projectsList.append(ul);
   };
 
+  const newProject = () => {
+    const newProjectInput = document.createElement("input");
+    newProjectInput.setAttribute("type", "input");
+    newProjectInput.setAttribute("placeholder", "New project name");
+    projectsList.append(newProjectInput);
+  };
+
   newProjectBtn.addEventListener("click", () => {
     const newProjectName = prompt("Enter a name for your new project");
     pubsub.publish("UiNewProject", newProjectName);
