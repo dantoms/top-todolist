@@ -5,6 +5,7 @@ import { DateTime } from "luxon";
 export default (() => {
   const taskList = document.querySelector("#task-list");
   const projectsList = document.querySelector("#projects");
+  const newProjectBtn = document.querySelector("#new-project-btn");
 
   const renderTasks = (tasks) => {
     taskList.innerHTML = "";
@@ -53,6 +54,11 @@ export default (() => {
     });
     projectsList.append(ul);
   };
+
+  newProjectBtn.addEventListener("click", () => {
+    const newProjectName = prompt("Enter a name for your new project");
+    pubsub.publish("UiNewProject", newProjectName);
+  });
 
   pubsub.subscribe("taskAdded", renderTasks);
   pubsub.subscribe("projectAdded", renderProjects);

@@ -63,3 +63,7 @@ export class Task {
 
 export const projects = new Projects();
 export const tasks = new Tasks();
+
+pubsub.subscribe("UiNewProject", (name) => {
+  new Project(name);
+});
