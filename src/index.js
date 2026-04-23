@@ -1,6 +1,5 @@
 import "./styles.css";
 import { pubsub } from "./pubsub.js";
-import { Project, Task } from "./data.js";
 import { StorageController } from "./storage.js";
 import "./display.js";
 
