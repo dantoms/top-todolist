@@ -21,7 +21,8 @@ export class StorageController {
   }
 
   saveData() {
-    const stringifiedData = JSON.stringify(this._currentData);
+    const newData = { projects: projects.projects, tasks: tasks.tasks };
+    const stringifiedData = JSON.stringify(newData);
     localStorage.setItem("data", stringifiedData);
   }
 
