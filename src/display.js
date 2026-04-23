@@ -79,7 +79,6 @@ export default (() => {
 
   newProjectBtn.addEventListener("click", () => {
     newProject();
-    // const newProjectName = prompt("Enter a name for your new project");
   });
 
   pubsub.subscribe("taskAdded", renderTasks);
