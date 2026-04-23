@@ -9,6 +9,11 @@ export default (() => {
 
     tasks.forEach((task) => {
       const li = document.createElement("li");
+      const mainDetail = document.createElement("div");
+      mainDetail.setAttribute("class", "task-main-detail");
+
+      const taskDiv = document.createElement("div");
+
       const input = document.createElement("input");
       input.setAttribute("id", task._id);
       input.setAttribute("type", "checkbox");
@@ -26,7 +31,9 @@ export default (() => {
         // DateTime.DATE_MED,
       );
 
-      li.append(input, label, due);
+      taskDiv.append(input, label);
+      mainDetail.append(taskDiv, due);
+      li.append(mainDetail);
       taskList.append(li);
     });
   };
