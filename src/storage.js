@@ -16,7 +16,6 @@ export class StorageController {
         defaultProject._id,
       );
       this._currentData = { projects: projects.projects, tasks: tasks.tasks };
-      pubsub.publish("newData", "New data structure created");
       this.saveData();
     }
   }
@@ -24,7 +23,6 @@ export class StorageController {
   saveData() {
     const stringifiedData = JSON.stringify(this._currentData);
     localStorage.setItem("data", stringifiedData);
-    pubsub.publish("newData", "Current data saved to local storage");
   }
 
   loadData() {
@@ -45,6 +43,5 @@ export class StorageController {
         t._complete,
       );
     });
-    pubsub.publish("newData", `Data read from localStorage.`);
   }
 }
