@@ -31,7 +31,7 @@ export class StorageController {
     const data = localStorage.getItem("data");
     this._currentData = JSON.parse(data);
     this._currentData.projects.forEach((p) => {
-      new Project(p.name, p.id);
+      new Project(p._name, p._id);
     });
     this._currentData.tasks.forEach((t) => {
       new Task(

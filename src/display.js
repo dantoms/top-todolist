@@ -1,9 +1,11 @@
 import { pubsub } from "./pubsub.js";
-import { tasks } from "./data.js";
+import { tasks, projects } from "./data.js";
 import { DateTime } from "luxon";
 
 export default (() => {
   const taskList = document.querySelector("#task-list");
+  const projectsList = document.querySelector("#projects");
+
   const renderTasks = (tasks) => {
     taskList.innerHTML = "";
 
@@ -38,7 +40,23 @@ export default (() => {
     });
   };
 
+  const renderProjects = (projects) => {
+    projectsList.innerHTML = "";
+    const ul = document.createElement("ul");
+
+    projects.forEach((project) => {
+      const li = document.createElement("li");
+      li.setAttribute("id", project._id);
+      li.textContent = project._name;
+
+      ul.append(li);
+    });
+    projectsList.append(ul);
+  };
+
   pubsub.subscribe("taskAdded", renderTasks);
+  pubsub.subscribe("projectAdded", renderProjects);
 
   renderTasks(tasks.tasks);
+  renderProjects(projects.projects);
 })();
