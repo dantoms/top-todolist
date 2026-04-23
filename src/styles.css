@@ -89,6 +89,10 @@ button:hover {
   list-style: none;
 }
 
+#new-project-input-container {
+  display: flex;
+}
+
 #tasks {
   width: 75%;
 }

@@ -57,16 +57,29 @@ export default (() => {
   };
 
   const newProject = () => {
+    const newProjectInputContainer = document.createElement("div");
+    newProjectInputContainer.setAttribute("id", "new-project-input-container");
     const newProjectInput = document.createElement("input");
     newProjectInput.setAttribute("type", "input");
     newProjectInput.setAttribute("placeholder", "New project name");
-    projectsList.append(newProjectInput);
+
+    const newProjectSubmitBtn = document.createElement("button");
+    newProjectSubmitBtn.setAttribute("type", "submit");
+    newProjectSubmitBtn.textContent = "add";
+
+    newProjectInputContainer.append(newProjectInput, newProjectSubmitBtn);
+    projectsList.append(newProjectInputContainer);
     newProjectInput.focus();
+
+    newProjectSubmitBtn.addEventListener("click", () => {
+      const newProjectName = newProjectInput.value;
+      pubsub.publish("UiNewProject", newProjectName);
+    });
   };
 
   newProjectBtn.addEventListener("click", () => {
-    const newProjectName = prompt("Enter a name for your new project");
-    pubsub.publish("UiNewProject", newProjectName);
+    newProject();
+    // const newProjectName = prompt("Enter a name for your new project");
   });
 
   pubsub.subscribe("taskAdded", renderTasks);
