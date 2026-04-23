@@ -61,6 +61,7 @@ export default (() => {
     newProjectInput.setAttribute("type", "input");
     newProjectInput.setAttribute("placeholder", "New project name");
     projectsList.append(newProjectInput);
+    newProjectInput.focus();
   };
 
   newProjectBtn.addEventListener("click", () => {
