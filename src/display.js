@@ -22,7 +22,8 @@ export default (() => {
 
       const due = document.createElement("p");
       due.textContent = DateTime.fromISO(task._dueDate).toLocaleString(
-        DateTime.DATE_MED_WITH_WEEKDAY,
+        { month: "short", day: "numeric" },
+        // DateTime.DATE_MED,
       );
 
       li.append(input, label, due);
