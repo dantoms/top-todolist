@@ -1,5 +1,6 @@
 import { pubsub } from "./pubsub.js";
 import { projects, Project, tasks, Task } from "./data.js";
+import { DateTime } from "luxon";
 
 export class StorageController {
   constructor() {
@@ -11,7 +12,7 @@ export class StorageController {
         "The developer's birthday!",
         "Happy Birthday Developer",
         "priority",
-        new Date(2030, 0, 6, 0, 0, 0),
+        DateTime.local(2026, 5, 6),
         defaultProject._id,
       );
       this._currentData = { projects: projects.projects, tasks: tasks.tasks };
