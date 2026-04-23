@@ -86,7 +86,11 @@ button:hover {
 }
 
 .project {
+  width: 75%;
   list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #new-project-input-container {
