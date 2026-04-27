@@ -58,6 +58,7 @@ export default (() => {
 
       deleteIcon.addEventListener("click", (e) => {
         console.log("delete button clicked", e.target.parentElement.id);
+        pubsub.publish("projectDelete", e.target.parentElement.id);
       });
 
       ul.append(li);

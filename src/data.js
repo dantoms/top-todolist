@@ -13,6 +13,11 @@ class Projects {
     this._projects.push(project);
     pubsub.publish("projectAdded", this._projects);
   }
+
+  deleteProject(id) {
+    this._projects = this._projects.filter((project) => project.id !== id);
+    pubsub.publish("projectAdded", this._projects);
+  }
 }
 
 export class Project {
@@ -67,4 +72,8 @@ export const tasks = new Tasks();
 
 pubsub.subscribe("UiNewProject", (projectData) => {
   new Project(projectData.name, projectData.color);
+});
+
+pubsub.subscribe("projectDelete", (id) => {
+  projects.deleteProject(id);
 });
