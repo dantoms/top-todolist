@@ -9,10 +9,24 @@ export class StorageController {
     } else {
       const defaultProject = new Project("Inbox", "grey");
       new Task(
-        "The developer's birthday!",
-        "Happy Birthday Developer",
-        "priority",
-        DateTime.local(2026, 5, 6),
+        "High priority task",
+        "Default task",
+        "high",
+        DateTime.local(3026, 5, 6),
+        defaultProject._id,
+      );
+      new Task(
+        "Medium priority task",
+        "Default task",
+        "med",
+        DateTime.local(3026, 5, 6),
+        defaultProject._id,
+      );
+      new Task(
+        "Low priority task",
+        "Default task",
+        "low",
+        DateTime.local(3026, 5, 6),
         defaultProject._id,
       );
       this._currentData = { projects: projects.projects, tasks: tasks.tasks };
