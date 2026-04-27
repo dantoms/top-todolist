@@ -56,6 +56,10 @@ export default (() => {
       deleteIcon.src = ImgDelete;
       li.append(deleteIcon);
 
+      deleteIcon.addEventListener("click", (e) => {
+        console.log("delete button clicked", e.target.parentElement.id);
+      });
+
       ul.append(li);
     });
     projectsList.append(ul);
