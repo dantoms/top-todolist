@@ -29,10 +29,10 @@ export default (() => {
       label.textContent = task._title;
 
       const due = document.createElement("p");
-      due.textContent = DateTime.fromISO(task._dueDate).toLocaleString(
-        { month: "short", day: "numeric" },
-        // DateTime.DATE_MED,
-      );
+      due.textContent = DateTime.fromISO(task._dueDate).toLocaleString({
+        month: "short",
+        day: "numeric",
+      });
 
       taskDiv.append(input, label);
       mainDetail.append(taskDiv, due);
