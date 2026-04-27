@@ -1,3 +1,4 @@
+import ImgDelete from "./remove-svgrepo-com.svg";
 import { pubsub } from "./pubsub.js";
 import { tasks, projects } from "./data.js";
 import { DateTime } from "luxon";
@@ -48,8 +49,12 @@ export default (() => {
     projects.forEach((project) => {
       const li = document.createElement("li");
       li.setAttribute("id", project._id);
-      li.setAttribute("class", "project");
+      li.classList.add("project", project._color);
       li.textContent = project._name;
+      const deleteIcon = document.createElement("img");
+      deleteIcon.classList.add("delete-icon");
+      deleteIcon.src = ImgDelete;
+      li.append(deleteIcon);
 
       ul.append(li);
     });

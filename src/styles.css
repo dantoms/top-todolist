@@ -108,6 +108,34 @@ main {
   text-overflow: ellipsis;
 }
 
+.project::before {
+  display: inline-block;
+  content: "";
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.delete-icon {
+  display: inline-flex;
+}
+
+.project .delete-icon {
+  margin-left: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: 200ms;
+  height: 1.5rem;
+}
+
+.project:hover .delete-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
 .color-btn.red,
 .project.red::before {
   background-color: var(--red);
