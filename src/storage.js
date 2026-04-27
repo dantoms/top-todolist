@@ -7,7 +7,7 @@ export class StorageController {
     if (localStorage.getItem("data")) {
       this.loadData();
     } else {
-      const defaultProject = new Project("Inbox");
+      const defaultProject = new Project("Inbox", "grey");
       new Task(
         "The developer's birthday!",
         "Happy Birthday Developer",
@@ -30,7 +30,7 @@ export class StorageController {
     const data = localStorage.getItem("data");
     this._currentData = JSON.parse(data);
     this._currentData.projects.forEach((p) => {
-      new Project(p._name, p._id);
+      new Project(p._name, p._color, p._id);
     });
     this._currentData.tasks.forEach((t) => {
       new Task(

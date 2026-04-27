@@ -16,8 +16,9 @@ class Projects {
 }
 
 export class Project {
-  constructor(name, id) {
+  constructor(name, color, id) {
     this._name = name;
+    this._color = color;
     this._id = id ?? crypto.randomUUID();
     projects.addProject(this);
   }
@@ -64,6 +65,6 @@ export class Task {
 export const projects = new Projects();
 export const tasks = new Tasks();
 
-pubsub.subscribe("UiNewProject", (name) => {
-  new Project(name);
+pubsub.subscribe("UiNewProject", (projectData) => {
+  new Project(projectData.name, projectData.color);
 });

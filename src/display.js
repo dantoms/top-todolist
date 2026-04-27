@@ -57,6 +57,8 @@ export default (() => {
   };
 
   const newProject = () => {
+    const colors = ["red", "gold", "green", "blue", "lavender", "grey"];
+    let selectedColor = "grey";
     const newProjectInputContainer = document.createElement("div");
     newProjectInputContainer.setAttribute("id", "new-project-input-container");
     const newProjectInput = document.createElement("input");
@@ -67,13 +69,44 @@ export default (() => {
     newProjectSubmitBtn.setAttribute("type", "submit");
     newProjectSubmitBtn.textContent = "add";
 
+    const colorPicker = document.createElement("div");
+    colorPicker.classList.add("color-picker");
+    colors.forEach((color) => {
+      const button = document.createElement("button");
+      button.setAttribute("type", "button");
+      button.classList.add("color-btn", color);
+
+      if (color === selectedColor) {
+        button.classList.add("selected");
+      }
+
+      button.addEventListener("click", () => {
+        colorPicker
+          .querySelectorAll(".color-btn")
+          .forEach((btn) => btn.classList.remove("selected"));
+
+        button.classList.add("selected");
+
+        selectedColor = color;
+      });
+      colorPicker.append(button);
+    });
+
     newProjectInputContainer.append(newProjectInput, newProjectSubmitBtn);
-    projectsList.append(newProjectInputContainer);
+    projectsList.append(newProjectInputContainer, colorPicker);
     newProjectInput.focus();
 
     newProjectSubmitBtn.addEventListener("click", () => {
-      const newProjectName = newProjectInput.value;
-      pubsub.publish("UiNewProject", newProjectName);
+      let newProjectName = newProjectInput.value;
+
+      if (newProjectName == "") {
+        return;
+      }
+      newProjectName = newProjectName.trim();
+      pubsub.publish("UiNewProject", {
+        name: newProjectName,
+        color: selectedColor,
+      });
     });
   };
 
