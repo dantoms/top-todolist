@@ -9,6 +9,16 @@ class Projects {
     return this._projects;
   }
 
+  getProjectNameById(id) {
+    let projectFound = "";
+    this._projects.forEach((project) => {
+      if (project._id === id) {
+        projectFound = project;
+      }
+    });
+    return projectFound;
+  }
+
   addProject(project) {
     this._projects.push(project);
     pubsub.publish("projectAdded", this._projects);
@@ -61,7 +71,7 @@ export class Task {
     this._project = project ?? projects.projects[0].id;
     this._id = id ?? crypto.randomUUID();
     this._created = created ?? Date.now();
-    this._complete = true;
+    this._complete = false;
 
     tasks.addTask(this);
   }
