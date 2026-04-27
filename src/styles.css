@@ -108,6 +108,7 @@ main {
   text-overflow: ellipsis;
 }
 
+.task-project-indicator::before,
 .project::before {
   display: inline-block;
   content: "";
@@ -136,36 +137,42 @@ main {
   visibility: visible;
 }
 
+.red.task-project-indicator::before,
 .color-btn.red,
 .project.red::before {
   background-color: var(--red);
   border-color: var(--red);
 }
 
+.gold.task-project-indicator::before,
 .color-btn.gold,
 .project.gold::before {
   background-color: var(--gold);
   border-color: var(--gold);
 }
 
+.green.task-project-indicator::before,
 .color-btn.green,
 .project.green::before {
   background-color: var(--green);
   border-color: var(--green);
 }
 
+.blue.task-project-indicator::before,
 .color-btn.blue,
 .project.blue::before {
   background-color: var(--blue);
   border-color: var(--blue);
 }
 
+.lavender.task-project-indicator::before,
 .color-btn.lavender,
 .project.lavender::before {
   background-color: var(--lavender);
   border-color: var(--lavender);
 }
 
+.grey.task-project-indicator::before,
 .color-btn.grey,
 .project.grey::before {
   background-color: var(--grey);
@@ -216,8 +223,16 @@ main {
 }
 
 #task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   margin: 30px;
   list-style-type: none;
+}
+
+#task-list > li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
 }
 
 #task-list input {
@@ -250,4 +265,34 @@ main {
 
 li > div > p {
   font-size: 1rem;
+}
+
+.task-details {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  display: flex;
+  gap: 20px;
+}
+
+.task-details > div {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+
+.priority-indicator {
+  font-weight: 700;
+  color: white;
+}
+
+.priority-indicator.high {
+  background-color: var(--red);
+}
+
+.priority-indicator.med {
+  background-color: var(--gold);
+}
+
+.priority-indicator.low {
+  background-color: var(--green);
 }

@@ -35,9 +35,22 @@ export default (() => {
         day: "numeric",
       });
 
+      const detailsDiv = document.createElement("div");
+      detailsDiv.classList.add("task-details");
+      const projectDiv = document.createElement("div");
+      const taskProject = projects.getProjectNameById(task._project);
+      projectDiv.classList.add(taskProject._color, "task-project-indicator");
+      projectDiv.textContent = taskProject._name;
+
+      const priorityDiv = document.createElement("div");
+      priorityDiv.classList.add("priority-indicator", task._priority);
+      priorityDiv.textContent = task._priority;
+
+      detailsDiv.append(projectDiv, priorityDiv);
+
       taskDiv.append(input, label);
       mainDetail.append(taskDiv, due);
-      li.append(mainDetail);
+      li.append(mainDetail, detailsDiv);
       taskList.append(li);
     });
   };
