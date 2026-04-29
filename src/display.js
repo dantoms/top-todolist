@@ -7,6 +7,8 @@ export default (() => {
   const taskList = document.querySelector("#task-list");
   const projectsList = document.querySelector("#projects");
   const newProjectBtn = document.querySelector("#new-project-btn");
+  const newTaskBtn = document.querySelector("#new-todo-btn");
+  const newTaskModal = document.querySelector("#new-task-dialog");
 
   const renderTasks = (tasks) => {
     taskList.innerHTML = "";
@@ -77,6 +79,15 @@ export default (() => {
       ul.append(li);
     });
     projectsList.append(ul);
+
+    const projectSelect = document.querySelector("#project-select");
+    projectSelect.innerHTML = "";
+    projects.forEach((project) => {
+      const option = document.createElement("option");
+      option.setAttribute("value", project._name);
+      option.textContent = project._name;
+      projectSelect.append(option);
+    });
   };
 
   const newProject = () => {
@@ -135,6 +146,14 @@ export default (() => {
 
   newProjectBtn.addEventListener("click", () => {
     newProject();
+  });
+
+  const newTask = () => {
+    newTaskModal.showModal();
+  };
+
+  newTaskBtn.addEventListener("click", () => {
+    newTask();
   });
 
   pubsub.subscribe("taskAdded", renderTasks);

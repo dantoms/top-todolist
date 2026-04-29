@@ -21,5 +21,33 @@
         </ul>
       </section>
     </main>
+    <dialog id="new-task-dialog">
+      <h2>New Task</h2>
+      <form>
+        <div class="form-row">
+          <label for="title">Task: </label>
+          <input type="text" id="title" name="title" />
+        </div>
+        <div class="form-row">
+          <label for="priority">Priority: </label>
+          <select name="priority" id="priority">
+            <option value="high">High</option>
+            <option value="med" selected="selected">Med</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="due">Due Date</label>
+          <input type="date" name="due" id="due" />
+        </div>
+        <div class="form-row">
+          <label for="project-select">Project: </label>
+          <select name="project-select" id="project-select"></select>
+        </div>
+        <div class="form-row">
+          <button type="submit">add task</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
