@@ -72,7 +72,6 @@ export default (() => {
       li.append(deleteIcon);
 
       deleteIcon.addEventListener("click", (e) => {
-        console.log("delete button clicked", e.target.parentElement.id);
         pubsub.publish("projectDelete", e.target.parentElement.id);
       });
 
@@ -165,7 +164,6 @@ export default (() => {
       const formData = new FormData(newTaskForm);
 
       const values = Object.fromEntries(formData);
-      // console.log("poop");
       pubsub.publish("UiNewTask", {
         title: values["title"],
         priority: values["priority"],
