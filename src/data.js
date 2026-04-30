@@ -73,9 +73,8 @@ class Tasks {
 }
 
 export class Task {
-  constructor(title, description, priority, dueDate, project, id, created) {
+  constructor(title, priority, dueDate, project, id, created) {
     this._title = title;
-    this._description = description;
     this._priority = priority;
     this._dueDate = dueDate ?? new Date(Date.now());
     this._project = project ?? projects.projects[0].id;

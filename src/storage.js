@@ -10,21 +10,18 @@ export class StorageController {
       const defaultProject = new Project("Inbox", "grey");
       new Task(
         "High priority task",
-        "Default task",
         "high",
         DateTime.local(3026, 5, 6),
         defaultProject._id,
       );
       new Task(
         "Medium priority task",
-        "Default task",
         "med",
         DateTime.local(3026, 5, 6),
         defaultProject._id,
       );
       new Task(
         "Low priority task",
-        "Default task",
         "low",
         DateTime.local(3026, 5, 6),
         defaultProject._id,
@@ -49,7 +46,6 @@ export class StorageController {
     this._currentData.tasks.forEach((t) => {
       new Task(
         t._title,
-        t._description,
         t._priority,
         t._dueDate,
         t._project,
