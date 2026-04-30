@@ -19,6 +19,16 @@ class Projects {
     return projectFound;
   }
 
+  getProjectIdByName(name) {
+    let projectFound = "";
+    this._projects.forEach((project) => {
+      if (project._name === name) {
+        projectFound = project;
+      }
+    });
+    return projectFound._id;
+  }
+
   addProject(project) {
     this._projects.push(project);
     pubsub.publish("projectAdded", this._projects);
@@ -86,4 +96,9 @@ pubsub.subscribe("UiNewProject", (projectData) => {
 
 pubsub.subscribe("projectDelete", (id) => {
   projects.deleteProject(id);
+});
+
+pubsub.subscribe("UiNewTask", (taskData) => {
+  const projectId = projects.getProjectIdByName(taskData.project);
+  new Task(taskData.title, taskData.priority, taskData.dueDate, projectId);
 });

@@ -23,7 +23,7 @@
     </main>
     <dialog id="new-task-dialog">
       <h2>New Task</h2>
-      <form>
+      <form id="new-task-form">
         <div class="form-row">
           <label for="title">Task: </label>
           <input type="text" id="title" name="title" />
@@ -37,15 +37,15 @@
           </select>
         </div>
         <div class="form-row">
-          <label for="due">Due Date</label>
+          <label for="due">Due Date: </label>
           <input type="date" name="due" id="due" />
         </div>
         <div class="form-row">
           <label for="project-select">Project: </label>
           <select name="project-select" id="project-select"></select>
         </div>
-        <div class="form-row">
-          <button type="submit">add task</button>
+        <div class="form-row new-task-submit-row">
+          <button type="submit" id="new-task-submit-btn">add task</button>
         </div>
       </form>
     </dialog>

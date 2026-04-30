@@ -80,6 +80,7 @@ export default (() => {
     });
     projectsList.append(ul);
 
+    const form = document.querySelector("form");
     const projectSelect = document.querySelector("#project-select");
     projectSelect.innerHTML = "";
     projects.forEach((project) => {
@@ -149,7 +150,30 @@ export default (() => {
   });
 
   const newTask = () => {
+    const newTaskForm = document.querySelector("#new-task-form");
+    const newTaskSubmitBtn = document.querySelector("#new-task-submit-btn");
+    const inputsToClear = document.querySelectorAll(".form-row > input");
+
+    inputsToClear.forEach((input) => {
+      input.value = "";
+    });
     newTaskModal.showModal();
+
+    newTaskSubmitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(newTaskForm);
+
+      const values = Object.fromEntries(formData);
+      // console.log("poop");
+      pubsub.publish("UiNewTask", {
+        title: values["title"],
+        priority: values["priority"],
+        dueDate: values["due"],
+        project: values["project-select"],
+      });
+      newTaskModal.close();
+    });
   };
 
   newTaskBtn.addEventListener("click", () => {

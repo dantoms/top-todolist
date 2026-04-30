@@ -10,3 +10,4 @@ function dataRecieved(data) {
 pubsub.subscribe("newData", dataRecieved);
 const storageController = new StorageController();
 pubsub.subscribe("projectAdded", () => storageController.saveData());
+pubsub.subscribe("taskAdded", () => storageController.saveData());

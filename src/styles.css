@@ -296,3 +296,27 @@ li > div > p {
 .priority-indicator.low {
   background-color: var(--green);
 }
+
+button[type="submit"] {
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 0.5rem 0.7rem;
+}
+
+#new-task-dialog {
+  /* width: 50dvw; */
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+#new-task-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.new-task-submit-row {
+  align-self: center;
+}
