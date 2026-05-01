@@ -94,7 +94,11 @@ export default (() => {
     e.stopPropagation();
     e.preventDefault();
     if (e.target.matches(".project")) {
+      const taskListHeader = document.querySelector("#task-list-header");
       const newTasks = [];
+
+      taskListHeader.textContent = e.target.textContent;
+
       tasks._tasks.forEach((task) => {
         if (task._project === e.target.id) {
           newTasks.push(task);
