@@ -90,6 +90,22 @@ export default (() => {
     });
   };
 
+  projectsList.addEventListener("click", (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(e);
+    if (e.target.matches(".project")) {
+      const newTasks = [];
+      tasks._tasks.forEach((task) => {
+        if (task._project === e.target.id) {
+          newTasks.push(task);
+        }
+      });
+      console.log(newTasks);
+      renderTasks(newTasks);
+    }
+  });
+
   const newProject = () => {
     const colors = ["red", "gold", "green", "blue", "lavender", "grey"];
     let selectedColor = "grey";
