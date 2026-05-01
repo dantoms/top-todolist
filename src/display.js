@@ -93,7 +93,6 @@ export default (() => {
   projectsList.addEventListener("click", (e) => {
     e.stopPropagation();
     e.preventDefault();
-    console.log(e);
     if (e.target.matches(".project")) {
       const newTasks = [];
       tasks._tasks.forEach((task) => {
@@ -101,7 +100,6 @@ export default (() => {
           newTasks.push(task);
         }
       });
-      console.log(newTasks);
       renderTasks(newTasks);
     }
   });
