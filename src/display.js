@@ -204,8 +204,6 @@ export default (() => {
   });
 
   newTaskSubmitBtn.addEventListener("click", (e) => {
-    console.log("New task submit handler");
-    console.trace();
     e.preventDefault();
 
     const formData = new FormData(newTaskForm);

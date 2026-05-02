@@ -72,10 +72,7 @@ class Tasks {
   }
 
   deleteTask(id) {
-    console.log("deleteTask");
-    this._tasks = this._tasks.filter((task) => {
-      task.id !== id;
-    });
+    this._tasks = this._tasks.filter((task) => task._id != id);
     pubsub.publish("taskDeleted", this._tasks);
   }
 
