@@ -131,6 +131,7 @@ main {
   display: inline-flex;
 }
 
+.task .delete-icon,
 .project .delete-icon {
   margin-left: auto;
   opacity: 0;
@@ -139,6 +140,7 @@ main {
   height: 1.5rem;
 }
 
+.task:hover .delete-icon,
 .project:hover .delete-icon {
   opacity: 1;
   visibility: visible;

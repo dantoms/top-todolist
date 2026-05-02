@@ -36,7 +36,7 @@ class Projects {
 
   deleteProject(id) {
     this._projects = this._projects.filter((project) => project.id !== id);
-    pubsub.publish("projectAdded", this._projects);
+    pubsub.publish("projectDeleted", this._projects);
   }
 }
 
@@ -69,6 +69,14 @@ class Tasks {
   addTask(task) {
     this._tasks.push(task);
     pubsub.publish("taskAdded", this._tasks);
+  }
+
+  deleteTask(id) {
+    console.log("deleteTask");
+    this._tasks = this._tasks.filter((task) => {
+      task.id !== id;
+    });
+    pubsub.publish("taskDeleted", this._tasks);
   }
 
   toggleComplete(id) {
@@ -113,6 +121,10 @@ pubsub.subscribe("UiNewProject", (projectData) => {
 
 pubsub.subscribe("projectDelete", (id) => {
   projects.deleteProject(id);
+});
+
+pubsub.subscribe("taskDelete", (id) => {
+  tasks.deleteTask(id);
 });
 
 pubsub.subscribe("UiNewTask", (taskData) => {

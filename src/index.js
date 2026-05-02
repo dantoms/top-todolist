@@ -5,5 +5,7 @@ import "./display.js";
 
 const storageController = new StorageController();
 pubsub.subscribe("projectAdded", () => storageController.saveData());
+pubsub.subscribe("projectDeleted", () => storageController.saveData());
 pubsub.subscribe("taskAdded", () => storageController.saveData());
+pubsub.subscribe("taskDeleted", () => storageController.saveData());
 pubsub.subscribe("taskChanged", () => storageController.saveData());

@@ -15,6 +15,7 @@ export default (() => {
 
     tasksToList.forEach((task) => {
       const li = document.createElement("li");
+      li.classList.add("task");
       const mainDetail = document.createElement("div");
       mainDetail.setAttribute("class", "task-main-detail");
 
@@ -60,6 +61,18 @@ export default (() => {
         }
       });
 
+      const deleteIcon = document.createElement("img");
+      deleteIcon.classList.add("delete-icon");
+      deleteIcon.src = ImgDelete;
+
+      deleteIcon.addEventListener("click", (e) => {
+        const taskId =
+          e.target.parentElement.parentElement.firstChild.firstChild.firstChild
+            .id;
+        pubsub.publish("taskDelete", taskId);
+      });
+
+      detailsDiv.append(deleteIcon);
       taskDiv.append(input, label);
       mainDetail.append(taskDiv, due);
       li.append(mainDetail, detailsDiv);
@@ -206,7 +219,9 @@ export default (() => {
   });
 
   pubsub.subscribe("taskAdded", renderTasks);
+  pubsub.subscribe("taskDeleted", renderTasks);
   pubsub.subscribe("projectAdded", renderProjects);
+  pubsub.subscribe("projectDeleted", renderProjects);
 
   renderTasks(tasks.tasks);
   renderProjects(projects.projects);
