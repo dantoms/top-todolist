@@ -70,17 +70,35 @@ class Tasks {
     this._tasks.push(task);
     pubsub.publish("taskAdded", this._tasks);
   }
+
+  toggleComplete(id) {
+    this._tasks.forEach((task) => {
+      if (task._id === id) {
+        task._complete = !task._complete;
+        console.log(task);
+        pubsub.publish("taskChanged", this._tasks);
+      }
+    });
+  }
 }
 
 export class Task {
-  constructor(title, priority, dueDate, project, id, created) {
+  constructor(
+    title,
+    priority,
+    dueDate,
+    project,
+    id,
+    created,
+    complete = false,
+  ) {
     this._title = title;
     this._priority = priority;
     this._dueDate = dueDate ?? new Date(Date.now());
     this._project = project ?? projects.projects[0].id;
     this._id = id ?? crypto.randomUUID();
     this._created = created ?? Date.now();
-    this._complete = false;
+    this._complete = complete;
 
     tasks.addTask(this);
   }

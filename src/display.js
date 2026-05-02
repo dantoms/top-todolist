@@ -10,10 +10,10 @@ export default (() => {
   const newTaskBtn = document.querySelector("#new-todo-btn");
   const newTaskModal = document.querySelector("#new-task-dialog");
 
-  const renderTasks = (tasks) => {
+  const renderTasks = (tasksToList) => {
     taskList.innerHTML = "";
 
-    tasks.forEach((task) => {
+    tasksToList.forEach((task) => {
       const li = document.createElement("li");
       const mainDetail = document.createElement("div");
       mainDetail.setAttribute("class", "task-main-detail");
@@ -25,6 +25,8 @@ export default (() => {
       input.setAttribute("type", "checkbox");
       if (task._complete) {
         input.checked = true;
+      } else {
+        input.checked = false;
       }
 
       const label = document.createElement("label");
@@ -49,6 +51,14 @@ export default (() => {
       priorityDiv.textContent = task._priority;
 
       detailsDiv.append(projectDiv, priorityDiv);
+
+      taskDiv.addEventListener("click", (e) => {
+        let id = null;
+        if (e.target.id) {
+          id = e.target.id;
+          tasks.toggleComplete(id);
+        }
+      });
 
       taskDiv.append(input, label);
       mainDetail.append(taskDiv, due);
