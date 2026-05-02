@@ -14,18 +14,6 @@ export class StorageController {
         DateTime.local(3026, 5, 6),
         defaultProject._id,
       );
-      new Task(
-        "Medium priority task",
-        "med",
-        DateTime.local(3026, 5, 6),
-        defaultProject._id,
-      );
-      new Task(
-        "Low priority task",
-        "low",
-        DateTime.local(3026, 5, 6),
-        defaultProject._id,
-      );
       this._currentData = { projects: projects.projects, tasks: tasks.tasks };
       this.saveData();
     }

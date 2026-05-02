@@ -89,7 +89,6 @@ export default (() => {
     });
     projectsList.append(ul);
 
-    const form = document.querySelector("form");
     const projectSelect = document.querySelector("#project-select");
     projectSelect.innerHTML = "";
     projects.forEach((project) => {
