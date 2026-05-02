@@ -9,6 +9,8 @@ export default (() => {
   const newProjectBtn = document.querySelector("#new-project-btn");
   const newTaskBtn = document.querySelector("#new-todo-btn");
   const newTaskModal = document.querySelector("#new-task-dialog");
+  const newTaskForm = document.querySelector("#new-task-form");
+  const newTaskSubmitBtn = document.querySelector("#new-task-submit-btn");
 
   const renderTasks = (tasksToList) => {
     taskList.innerHTML = "";
@@ -189,33 +191,33 @@ export default (() => {
   });
 
   const newTask = () => {
-    const newTaskForm = document.querySelector("#new-task-form");
-    const newTaskSubmitBtn = document.querySelector("#new-task-submit-btn");
     const inputsToClear = document.querySelectorAll(".form-row > input");
 
     inputsToClear.forEach((input) => {
       input.value = "";
     });
     newTaskModal.showModal();
-
-    newTaskSubmitBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(newTaskForm);
-
-      const values = Object.fromEntries(formData);
-      pubsub.publish("UiNewTask", {
-        title: values["title"],
-        priority: values["priority"],
-        dueDate: values["due"],
-        project: values["project-select"],
-      });
-      newTaskModal.close();
-    });
   };
 
   newTaskBtn.addEventListener("click", () => {
     newTask();
+  });
+
+  newTaskSubmitBtn.addEventListener("click", (e) => {
+    console.log("New task submit handler");
+    console.trace();
+    e.preventDefault();
+
+    const formData = new FormData(newTaskForm);
+
+    const values = Object.fromEntries(formData);
+    pubsub.publish("UiNewTask", {
+      title: values["title"],
+      priority: values["priority"],
+      dueDate: values["due"],
+      project: values["project-select"],
+    });
+    newTaskModal.close();
   });
 
   pubsub.subscribe("taskAdded", renderTasks);
